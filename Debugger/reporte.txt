@@ -21,11 +21,10 @@
 - Se suprimió la doble declaración de ii y jj. Se agregaron otras variables "a"
   y "b" solo para mantener un orden en el código.
 - Se inicializaron los arreglos x,y,z en 0 antes de usarse.
-- En todo lado donde aparecen las  fuciones print_array, se modificó la entrada
-  para que siempre sea el arreglo y su cantidad de elementos. Así se evita el
-  tratar de acceder a elementos fuera del arreglo.
-- El segundo "for" ahora solo modifica al arreglo "y".
-- Siguiendo el patrón, se agregó código para modificar "z" e imprimir nuevamente
-  todos los arreglos usando el kk que fue declarado pero nunca usado.
+- Se modifico el segundo ciclo for para que cuando print_array tenia como
+  argumento un array más un número, se sumara ese número a cada elemento del
+  array respectivo.
+- El segundo argumento de la función print_array ahora es siempre el tamaño del
+  array del primer argumento para evitar pedir elementos que no existen.
 - Se borra la memoria pedida para x antes de finalizar el main, para evitar
   leaks.

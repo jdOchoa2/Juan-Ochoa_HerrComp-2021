@@ -36,17 +36,14 @@ int main (int argc, char **argv)
   print_array(z, NZ);
   std::cout << std::endl;
 
-  for (int jj = 0; jj < NY; ++jj) {
-    y[jj] = jj;
-  }
-
-  print_array(x, NX);
-  print_array(y, NY);
-  print_array(z, NZ);
-  std::cout << std::endl;
-
-  for (int kk = 0; kk < NZ; ++kk) {
-    z[kk] = kk;
+  for (int jj = 0; jj < NZ; ++jj) {
+    z[jj]+=NZ+NY;
+    if (jj<NY){
+      y[jj] = jj-NZ;
+      if (jj<NX){
+         x[jj]=jj-NY;
+      }
+    }
   }
 
   print_array(x, NX);
