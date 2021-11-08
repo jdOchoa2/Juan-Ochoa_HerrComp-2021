@@ -1,0 +1,31 @@
+- Al compilar el código con sanitizers, las direcciones en memoria indican que
+  se guarda primero la dirección de "x", luego el arreglo "y" y por último el
+  arreglo "z". El arreglo "x" como tal pertenece a otra dirección en memoria.
+  La distribución en memoria no es continua, después de los 8bytes que
+  corresponden a cada valor del arreglo existen mas bytes de memoria antes de
+  empezar el siguiente arreglo.
+
+  Cuando se compila el código sin snitizers en la máquina virtual, se encontró
+  que el orden era el arreglo "z", el arreglo "y" y el apuntador "x". Para este
+  caso, para la mayoría de tamaños de arreglos, la distribución si fue continua.
+
+- En foo se agrego la opción de que cuando ocurra una división por 0, se retorne
+  0 por defecto y se alerte al usuario.
+- En bar, c se cambio a valor absoluto de a  para evitar errores cuando se conviertan
+  números negativos por el cambio a unsigned.
+- En baz, se asume que se quería verificar el valor de x, y por tratarse de un
+  double se optó por usar una tolerancia arbitraria frente al operador ==.
+- En baz, se arregló el primer return para que retorne el valor de v, sin declararla.
+- En baz, se agregó una advertencia cuando se saca raíz de números negativos y
+  se devuelve nan.
+- Se suprimió la doble declaración de ii y jj. Se agregaron otras variables "a"
+  y "b" solo para mantener un orden en el código.
+- Se inicializaron los arreglos x,y,z en 0 antes de usarse.
+- En todo lado donde aparecen las  fuciones print_array, se modificó la entrada
+  para que siempre sea el arreglo y su cantidad de elementos. Así se evita el
+  tratar de acceder a elementos fuera del arreglo.
+- El segundo "for" ahora solo modifica al arreglo "y".
+- Siguiendo el patrón, se agregó código para modificar "z" e imprimir nuevamente
+  todos los arreglos usando el kk que fue declarado pero nunca usado.
+- Se borra la memoria pedida para x antes de finalizar el main, para evitar
+  leaks.

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
+#include <ostream>
 
 int foo(int a, int b);
 int bar(int a, int b);
@@ -17,7 +18,7 @@ int main (int argc, char **argv)
   foo(b, a);
   baz(25.9);
 
-  const int NX = 2, NY = 3, NZ = 5;
+  const int NX = 2, NY = 3, NZ = 4;
   double *x, y[NY]={0}, z[NZ]={0};
   x = new double [NX]();
 
