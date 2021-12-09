@@ -17,7 +17,8 @@ int main(int argc, char **argv) {
   std::iota(data, data + N, 1.0);
   std::vector<std::thread> ths;
 
-  double localsize = double(N)/NTH;            //Use localsize as double yo take into account N%NTH!=0
+  double localsize = double(N)/NTH;            //Use localsize as double to take into account N%NTH!=0
+                                               //This way, there would be certain threads with a local size one unit bigger than the others. 
   for (int i = 0; i < NTH; i++) {
     int th_min_global_idx = (localsize)*i;     // minimum global index for thread i
     int th_max_global_idx = (localsize)*(i+1); // maximum global index for thread i
