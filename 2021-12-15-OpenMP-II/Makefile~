@@ -1,0 +1,9 @@
+all: openmp_parallel_for_manual.cpp openmp_parallel_for.cpp speedup.py parallel.py
+	g++ -fopenmp $<;\
+	for NTH in $(seq 1 12); do OMP_NUM_THREADS=${NTH} ./a.out; done > Man.txt;\
+	g++ -fopenmp openmp_parallel_for.cpp;\
+	for NTH in $(seq 1 12); do OMP_NUM_THREADS=${NTH} ./a.out; done > Auto.txt;\
+	python3 speedup.py;\
+	python3 parallel.py
+clean:
+	rm -f *.x *.png
